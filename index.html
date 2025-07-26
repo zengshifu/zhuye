@@ -502,73 +502,6 @@
             color: #ffd700;
         }
         
-        /* GitHub部署指南 */
-        .github-guide {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 1000px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .guide-title {
-            color: #8b0000;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .guide-steps {
-            counter-reset: step-counter;
-            margin-left: 1.5rem;
-        }
-        
-        .guide-step {
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-left: 3rem;
-        }
-        
-        .guide-step::before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2rem;
-            height: 2rem;
-            background: #8b0000;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .guide-image {
-            max-width: 100%;
-            margin: 1rem 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .github-btn {
-            display: inline-block;
-            background: #24292e;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 1rem;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        
-        .github-btn:hover {
-            background: #2c3136;
-        }
-        
         /* 响应式设计 */
         @media (max-width: 768px) {
             .navbar {
@@ -630,7 +563,6 @@
                     <li><a href="#products"><i class="fas fa-utensils"></i> 产品展示</a></li>
                     <li><a href="#about"><i class="fas fa-building"></i> 关于我们</a></li>
                     <li><a href="#contact"><i class="fas fa-phone-alt"></i> 联系方式</a></li>
-                    <li><a href="#github"><i class="fab fa-github"></i> 网站部署</a></li>
                 </ul>
             </nav>
         </div>
@@ -824,50 +756,6 @@
         </div>
     </section>
 
-    <!-- GitHub Pages部署指南 -->
-    <section id="github" class="github-guide">
-        <div class="container">
-            <h2 class="guide-title">GitHub Pages部署指南</h2>
-            
-            <div class="guide-steps">
-                <div class="guide-step">
-                    <h3>1. 创建GitHub仓库</h3>
-                    <p>登录GitHub后，点击右上角的"+"图标，选择"New repository"</p>
-                    <p>仓库名称：输入您的仓库名（如：lawei-factory）</p>
-                    <p>选择 <strong>Public</strong>（公开仓库）</p>
-                    <p>勾选"Initialize this repository with a README"</p>
-                    <p>点击"Create repository"按钮</p>
-                </div>
-                
-                <div class="guide-step">
-                    <h3>2. 上传网站文件</h3>
-                    <p>在仓库页面，点击"Add file" > "Upload files"</p>
-                    <p>将本HTML文件拖到上传区域或点击"choose your files"</p>
-                    <p>点击"Commit changes"按钮</p>
-                </div>
-                
-                <div class="guide-step">
-                    <h3>3. 启用GitHub Pages</h3>
-                    <p>进入仓库的"Settings"选项卡</p>
-                    <p>在左侧菜单中选择"Pages"</p>
-                    <p>在"Source"部分选择"main"分支和"/ (root)"文件夹</p>
-                    <p>点击"Save"按钮</p>
-                </div>
-                
-                <div class="guide-step">
-                    <h3>4. 访问您的网站</h3>
-                    <p>等待几分钟后，刷新页面</p>
-                    <p>您会看到一个绿色提示框，显示您的网站URL：</p>
-                    <p><strong>https://[您的用户名].github.io/[仓库名]</strong></p>
-                    <p>点击该链接即可访问您的网站</p>
-                    <a href="https://github.com/" class="github-btn" target="_blank">
-                        <i class="fab fa-github"></i> 前往GitHub创建仓库
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- 页脚 -->
     <footer>
         <div class="footer-content">
@@ -980,16 +868,6 @@
             
             sliderContainer.addEventListener('mouseleave', () => {
                 slideInterval = setInterval(nextSlide, 5000);
-            });
-            
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
             });
         });
     </script>
