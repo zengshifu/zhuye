@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都曾师傅食品有限公司 - 传统工艺，地道风味</title>
+    <!-- CDN预连接加速 -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://www.douyin.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(249, 245, 240, 0.92);
+            z-index: -1;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background: linear-gradient(to right, #8b0000, #a52a2a);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-left: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: #ffd700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            left: 0;
+            width: 100%;
+        }
+        
+        /* 轮播图样式 */
+        .slider-container {
+            position: relative;
+            max-width: 1200px;
+            height: 500px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 3px solid #8b0000;
+        }
+        
+        .slider {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
+        
+        .slide {
+            width: 25%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .slide-1 { background-image: url('https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/酱肉片盘子.jpg?format=webp'); }
+        .slide-2 { background-image: url('https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/酱肉盘子.jpg?format=webp'); }
+        .slide-3 { background-image: url('https://images.unsplash.com/photo-1606755456206-b25206cde27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80'); }
+        .slide-4 { background-image: url('https://images.unsplash.com/photo-1603532648955-a039f6e9f5d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80'); }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: #ffd700;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .slider-btn:hover {
+            background-color: rgba(139, 0, 0, 0.8);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        /* 内容区域样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #8b0000;
+            position: relative;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #8b0000, #ffd700);
+            border-radius: 2px;
+        }
+        
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: #555;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+        
+        /* 产品展示 */
+        .products {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 4rem 0;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin: 2rem 0;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e0d0c0;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .product-info h3 {
+            color: #8b0000;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .price-tag {
+            background: #8b0000;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        /* 关于我们 */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            color: #8b0000;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 5px solid #8b0000;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 联系方式 */
+        .contact {
+            background-color: rgba(240, 230, 214, 0.85);
+            padding: 4rem 0;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid #8b0000;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #8b0000;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            color: #8b0000;
+        }
+        
+        /* 地图容器 */
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #8b0000;
+            display: none;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: linear-gradient(to right, #8b0000, #a52a2a);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-logo h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo-icon {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-right: 10px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: #ffd700;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #ffd700;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links ul li a i {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .footer-links ul li a:hover {
+            color: #ffd700;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffd700;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .slider-container {
+                height: 350px;
+            }
+            
+            .slide-content {
+                padding: 1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-links h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <i class="fas fa-bacon logo-icon"></i>
+                <h1>成都曾师傅食品有限公司</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="#products"><i class="fas fa-utensils"></i> 产品展示</a></li>
+                    <li><a href="#about"><i class="fas fa-building"></i> 关于我们</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> 联系方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 轮播图 -->
+    <section id="home">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide slide-1">
+                    <div class="slide-content">
+                        <h2>传统工艺 · 匠心传承</h2>
+                        <p>精选优质食材，匠心制作每一块腊肉</p>
+                    </div>
+                </div>
+                <div class="slide slide-2">
+                    <div class="slide-content">
+                        <h2>自然风干 · 风味独特</h2>
+                        <p>遵循古法工艺，保留食材原香</p>
+                    </div>
+                </div>
+                <div class="slide slide-3">
+                    <div class="slide-content">
+                        <h2>工厂实景 · 严格品控</h2>
+                        <p>现代化生产车间，确保品质安全</p>
+                    </div>
+                </div>
+                <div class="slide slide-4">
+                    <div class="slide-content">
+                        <h2>多种产品 · 丰富选择</h2>
+                        <p>腊肉、香肠、腊排骨等系列产品</p>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 简介 -->
+    <section class="intro-section">
+        <div class="container">
+            <h2 class="section-title">传统工艺 · 地道风味</h2>
+            <p class="intro">
+                成都曾师傅食品有限公司始于1985年，秉承百年传统工艺，精选优质食材，结合现代生产技术，
+                打造出风味独特、品质卓越的腊肉产品。我们的腊肉经过精心腌制和自然风干，
+                保留了肉质的鲜美与独特的风味，是您餐桌上的美味佳肴。
+                <br><br>
+                工厂占地5000平方米，拥有现代化的生产车间和严格的质量管理体系。产品已通过
+                ISO9001质量管理体系认证和HACCP食品安全管理体系认证，确保每一块腊肉都安全卫生、
+                品质稳定。
+            </p>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">精选产品</h2>
+            <div class="product-grid">
+                <!-- 产品1 -->
+                <div class="product-card">
+                    <div class="product-img" style="position:relative;">
+                        <div class="mini-slider">
+                            <img class="mini-slide active" src="https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/五香腊肉片.jpg?format=webp" alt="五香腊肉" style="width:100%;height:100%;object-fit:cover;">
+                            <img class="mini-slide" src="https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/五花腊肉--1_10.jpg?format=webp" alt="五花腊肉" style="width:100%;height:100%;object-fit:cover;display:none;">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>腊肉</h3>
+                        <p>采用传统工艺腌制，自然风干，肥瘦相间，口感醇厚</p>
+                    </div>
+                </div>
+                <script>
+    // filepath: f:\网店\公司网站\index.html
+    // 五香腊肉 mini-slider 自动轮播
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.mini-slide');
+        const prevBtn = document.querySelector('.mini-prev');
+        const nextBtn = document.querySelector('.mini-next');
+        let miniIndex = 0;
+        let miniTimer = null;
+
+        function showMiniSlide(idx) {
+            slides.forEach((img, i) => {
+                img.style.display = i === idx ? 'block' : 'none';
+            });
+        }
+
+        function nextMiniSlide() {
+            miniIndex = (miniIndex + 1) % slides.length;
+            showMiniSlide(miniIndex);
+        }
+
+        function prevMiniSlide() {
+            miniIndex = (miniIndex - 1 + slides.length) % slides.length;
+            showMiniSlide(miniIndex);
+        }
+        // 自动轮播
+        function startMiniSlider() {
+            miniTimer = setInterval(nextMiniSlide, 1500);
+        }
+        function stopMiniSlider() {
+            clearInterval(miniTimer);
+        }
+
+        // 鼠标悬停暂停
+        const miniSliderDiv = prevBtn.parentElement;
+        miniSliderDiv.addEventListener('mouseenter', stopMiniSlider);
+        miniSliderDiv.addEventListener('mouseleave', startMiniSlider);
+
+        showMiniSlide(miniIndex);
+        startMiniSlider();
+    });
+</script>
+                <!-- 产品2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/广味香肠.jpg?format=webp" alt="香肠">
+                    </div>
+                    <div class="product-info">
+                        <h3>秘制香肠</h3>
+                        <p>精选猪肉，独家配方，口感鲜香，回味无穷</p>
+                    </div>
+                </div>
+                 <!-- 新产品2：风吹五花 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/风吹五花.png?format=webp" alt="风吹五花肉">
+                    </div>
+                    <div class="product-info">
+                        <h3>风吹五花肉</h3>
+                        <p>自然风干工艺，肉质紧实，咸香适口，肥瘦均匀</p>
+                    </div>
+                </div>
+                    <!-- 新产品1：酱肉 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/酱肉片盘子.jpg?format=webp" alt="秘制酱肉">
+                    </div>
+                    <div class="product-info">
+                        <h3>秘制酱肉</h3>
+                        <p>特调酱料腌制，色泽红亮，酱香浓郁，肥而不腻</p>
+                    </div>
+                </div>
+                <!-- 产品3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/腊排骨.jpg?format=webp" alt="腊排骨">
+                    </div>
+                    <div class="product-info">
+                        <h3>风味腊排骨</h3>
+                        <p>选用优质排骨，精心腌制，肉质紧实，香气扑鼻</p>
+                    </div>
+                </div>
+                
+                <!-- 产品4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.jsdelivr.net/gh/zengshifu/zhuye@main/images/腊猪蹄.jpg?format=webp" alt="腊猪蹄">
+                    </div>
+                    <div class="product-info">
+                        <h3>腊猪蹄</h3>
+                        <p>胶原蛋白丰富，肉质Q弹，炖煮后汤汁浓郁</p>
+                    </div>
+                </div>             
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">关于曾师傅</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>传统工艺与现代技术的完美结合</h3>
+                    <p>成都曾师傅食品有限公司创立于1985年，至今已有近40年的历史。我们始终坚持"质量第一，顾客至上"的经营理念，传承百年腊味制作工艺。</p>
+                    <p>工厂占地5000平方米，拥有现代化的生产车间和严格的质量管理体系。我们的产品选用当地优质猪肉，经过精心挑选、科学配方、传统腌制和自然风干等多道工序制作而成。</p>
+                    <p>多年来，我们不断改进工艺，在保留传统风味的同时，引入现代食品加工技术，确保产品安全卫生、品质稳定。</p>
+                    <p>产品销往全国各地，并深受消费者喜爱。我们期待与您分享这份来自传统的美味！</p>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div style="background: #8b0000; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; display: inline-flex; align-items: center;">
+                            <i class="fas fa-award" style="margin-right: 10px;"></i> ISO9001认证
+                        </div>
+                        <div style="background: #8b0000; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; display: inline-flex; align-items: center;">
+                            <i class="fas fa-certificate" style="margin-right: 10px;"></i> HACCP认证
+                        </div>
+                        <div style="background: #8b0000; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; display: inline-flex; align-items: center;">
+                            <i class="fas fa-medal" style="margin-right: 10px;"></i> 四川老字号
+                        </div>
+                    </div>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="腊肉工厂">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>公司地址</h3>
+                    <p>四川省成都市蒲江县寿安镇青蒲路1466号1栋附2号</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://uri.amap.com/marker?position=103.65297,30.27618&name=成都曾师傅食品有限公司" 
+                           target="_blank" 
+                           style="background: #8b0000; color: white; padding: 0.5rem 1.5rem; border-radius: 5px; display: inline-block; text-decoration: none;"
+                           id="showMapBtn">
+                            查看地图 <i class="fas fa-map-marked-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>联系电话</h3>
+                    <p>19983141389（王经理）</p>
+                    <p>028-88634454</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="tel:19983141389" style="background: #8b0000; color: white; padding: 0.5rem 1.5rem; border-radius: 5px; display: inline-block; text-decoration: none;">
+                            立即拨打 <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>电子邮箱</h3>
+                    <p>info@zengshifu.com</p>
+                    <p>business@zengshifu.com</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="mailto:info@zengshifu.com" style="background: #8b0000; color: white; padding: 0.5rem 1.5rem; border-radius: 5px; display: inline-block; text-decoration: none;">
+                            发送邮件 <i class="fas fa-envelope-open-text"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 地图容器 -->
+            <div class="map-container" id="mapContainer">
+                <!-- 地图将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2><i class="fas fa-bacon footer-logo-icon"></i>成都曾师傅食品有限公司</h2>
+                <p>传承百年工艺，品味地道腊香</p>
+            </div>          
+            <div class="footer-links">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="#products"><i class="fas fa-utensils"></i> 产品展示</a></li>
+                    <li><a href="#about"><i class="fas fa-building"></i> 关于我们</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> 联系方式</a></li>
+                </ul>
+            </div>
+            
+           <div class="footer-links">
+    <h3>产品购买</h3>
+    <ul>
+        <li>
+            <a href="https://xinchuanpai.tmall.com/shop/view_shop.htm?appUid=RAzN8HWM6R3qCex6sxA6VzGbRQZaX6HShWUnued4dwZZkyRjYuj&spm=a21n57.1.hoverItem.3" target="_blank">
+                <i class="fab fa-shopping-bag"></i> 淘宝店铺
+            </a>
+        </li>
+        <li>
+            <a href="https://v.douyin.com/ttVX7CCCXYQ/" target="_blank">
+                <i class="fab fa-tiktok"></i> 抖音店铺
+            </a>
+        </li>
+    </ul>
+</div>
+            
+            <div class="footer-links">
+                <h3>关注我们</h3>
+                <ul>
+                    <li><a href="https://www.douyin.com/user/MS4wLjABAAAAJbdREkLFawJKbpCQhnkO-MCgMsNzo7keR7qwvWI0CeA?from_tab_name=main"target="_blank"><i class="fab fa-tiktok"></i> 抖音号</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+   <script>
+        // 轮播图功能实现
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            
+            // 更新轮播图状态
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * 25}%)`;
+                
+                // 更新指示点状态
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // 下一张
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            }
+            
+            // 上一张
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlider();
+            }
+            
+            // 点击指示点
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                });
+            });
+            
+            // 添加按钮事件
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // 自动轮播
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            // 鼠标悬停时暂停轮播
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            sliderContainer.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
